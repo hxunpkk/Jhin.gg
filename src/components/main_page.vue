@@ -1,10 +1,22 @@
 <template>
-    <v-app class="grey darken-4">
-        <v-container class="d-flex flex-row white rounded-pill" xs8>
-            <v-flex xs3><v-select label="지역" :items="regions"></v-select></v-flex>
-            <v-flex xs6><v-text-field label="소환사 명" ></v-text-field></v-flex>
-        </v-container>
-    </v-app>
+    <v-container>
+        <v-row class="mt-5" justify="center">
+            <v-col cols="5">
+                <v-img src="@/assets/logo.png"></v-img>
+            </v-col>
+        </v-row>
+        <v-row class="mt-12" justify="center">
+            <v-col cols="6" class="white rounded-pill">
+                <v-row class="ml-2">
+                    <v-select label="지역" :items="regions" style="width: 20%"></v-select>
+                    <v-text-field label="소환사 명" style="width: 65%"></v-text-field>
+                    <v-btn fab small class="mt-3">
+                    <v-icon>mdi-magnify</v-icon>
+                </v-btn>
+                </v-row>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
@@ -18,11 +30,5 @@
     }
 </script>
 
-<style lang="scss" scoped>
-.select_class_name.v-text-field>.v-input__control>.v-input__slot:before { 
-     border-style: none; 
-} 
-.select_class_name.v-text-field>.v-input__control>.v-input__slot:after { 
-     border-style: none; 
-}
+<style lang="scss">
 </style>

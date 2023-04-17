@@ -3,7 +3,7 @@
     <v-app-bar app>
       JHIN.GG
     </v-app-bar>
-    <v-main>
+    <v-main class="grey darken-4">
       <router-view></router-view>
     </v-main>
   </v-app>

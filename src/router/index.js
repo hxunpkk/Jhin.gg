@@ -10,6 +10,15 @@ export default new Router({
             path:'/',
             name:'main_page',
             component:()=>import('../components/main_page.vue')
+        },
+        {
+            path:'/stats/:s_ID',
+            name:'stats_page',
+            component:()=>import('../components/stats_page.vue')
+        },
+        {
+            path:'*',
+            redirect:'/'
         }
     ]
 })

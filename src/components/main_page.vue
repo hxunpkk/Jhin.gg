@@ -9,8 +9,8 @@
             <v-col cols="6" class="white rounded-pill">
                 <v-row class="ml-2">
                     <v-select label="지역" :items="regions" style="width: 20%"></v-select>
-                    <v-text-field label="소환사 명" style="width: 65%"></v-text-field>
-                    <v-btn fab small class="mt-3">
+                    <v-text-field label="소환사 명" style="width: 65%" name="name" v-model="searchName"></v-text-field>
+                    <v-btn fab small class="mt-3" @click="fnSearchSummoner(searchName)">
                     <v-icon>mdi-magnify</v-icon>
                 </v-btn>
                 </v-row>
@@ -24,7 +24,13 @@
         name:'MainPage',
         data(){
             return {
-                regions:['korea', 'north america', 'japan', 'china', 'EU']
+                regions:['korea', 'north america', 'japan', 'china', 'EU'],
+                searchName:''
+            }
+        },
+        methods:{
+            fnSearchSummoner(sID){
+                this.$router.push({name:'stats_page', params:{s_ID:sID}})
             }
         }
     }

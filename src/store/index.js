@@ -1,3 +1,4 @@
+import router from '@/router'
 import axios from 'axios'
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -9,7 +10,8 @@ export default new Vuex.Store({
         searchName:'',
         summoner:[],
         apiKey:'RGAPI-4734ef0e-589e-4540-94fb-7eed819bb55a',
-        rank:[]
+        rank:[],
+        matchID:[]
     },
     mutations:{
         SEARCH_SUMMONER(state, id){
@@ -19,15 +21,19 @@ export default new Vuex.Store({
             state.summoner = stats
         },
         SET_RANK(state, stats){
-            state.rank = stats
-            console.log(state.rank)
+            state.rank = stats.data.filter(item=>item['queueType'] == "RANKED_SOLO_5x5")
+        },
+        SET_MATCH(state, matches){
+            state.matchID = matches.data
+            console.log(state.matchID)
         }
     },
     getters:{
         apiKey: state => state.apiKey,
         searchName: state => state.searchName,
         summoner: state => state.summoner,
-        rank: state => state.rank
+        rank: state => state.rank,
+        matchID: state => state.matchID
     },
     actions:{
         searchUser:({commit}, payload) => {
@@ -37,6 +43,16 @@ export default new Vuex.Store({
                 .then((result)=>{
                     commit('SET_RANK', result)
                 })
+            }).catch(error => {
+                console.log(error)
+                router.go('-1')
+                alert('아이디를 다시 확인하세요!')
+                
+            })
+        },
+        findMatch:({commit}, payload) => {
+            axios.get('https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/'+payload.puuid+'/ids?type=ranked&start=0&count=10&api_key='+payload.apiKey).then((res)=>{
+                commit('SET_MATCH', res)
             })
         }
     }

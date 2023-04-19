@@ -8,7 +8,8 @@ export default new Vuex.Store({
     state:{
         searchName:'',
         summoner:[],
-        apiKey:'RGAPI-d560c838-ca38-46b3-b0a9-955acacc709d'
+        apiKey:'RGAPI-4734ef0e-589e-4540-94fb-7eed819bb55a',
+        rank:[]
     },
     mutations:{
         SEARCH_SUMMONER(state, id){
@@ -16,17 +17,26 @@ export default new Vuex.Store({
         },
         SET_SUMMONER(state, stats){
             state.summoner = stats
-            console.log(stats)
+        },
+        SET_RANK(state, stats){
+            state.rank = stats
+            console.log(state.rank)
         }
     },
     getters:{
         apiKey: state => state.apiKey,
-        searchName: state => state.searchName
+        searchName: state => state.searchName,
+        summoner: state => state.summoner,
+        rank: state => state.rank
     },
     actions:{
-        searchUser:({commit}) => {
-            axios.get('https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+this.$store.getters.searchName+'?api_key='+this.$store.getters.apiKey).then((res)=>{
+        searchUser:({commit}, payload) => {
+            axios.get('https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+payload.searchName+'?api_key='+payload.apiKey).then((res)=>{
                 commit('SET_SUMMONER', res)
+                axios.get('https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/'+res.data.id+'?api_key='+payload.apiKey)
+                .then((result)=>{
+                    commit('SET_RANK', result)
+                })
             })
         }
     }

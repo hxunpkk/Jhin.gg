@@ -30,6 +30,8 @@
         },
         methods:{
             fnSearchSummoner(sID){
+                this.$store.commit('SEARCH_SUMMONER', sID)
+                this.$store.dispatch('searchUser', {searchName:this.$store.getters.searchName, apiKey:this.$store.getters.apiKey})
                 this.$router.push({name:'stats_page', params:{s_ID:sID}})
             }
         }

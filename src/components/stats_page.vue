@@ -16,7 +16,7 @@
                 {{ item.losses }}
             </v-col>
         </v-row>
-        <v-btn @click="matchFinder">전적 갱신하기</v-btn>
+        <v-btn @click="[matchReset(), matchFinder()]">전적 갱신하기</v-btn>
     </v-container>
 </template>
 
@@ -41,7 +41,11 @@
         },
         methods:{
             matchFinder(){
-                this.$store.dispatch('findMatch', {puuid:this.$store.getters.summoner.data.puuid, apiKey:this.$store.getters.apiKey})
+                this.$store.dispatch('findMatch', {puuid:this.$store.getters.summoner.data.puuid, apiKey:this.$store.getters.apiKey, sid:this.$store.getters.searchName})
+                this.$store.commit('SORT_MATCH', this.$store.getters.matchData)
+            },
+            matchReset(){
+                this.$store.dispatch('matchReset')
             }
         }
         

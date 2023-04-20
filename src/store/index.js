@@ -9,9 +9,11 @@ export default new Vuex.Store({
     state:{
         searchName:'',
         summoner:[],
-        apiKey:'RGAPI-4734ef0e-589e-4540-94fb-7eed819bb55a',
+        apiKey:'RGAPI-e8198b51-fe21-4657-bf69-bc660c7c3b5e',
         rank:[],
-        matchID:[]
+        matchID:[],
+        matchData:[],
+        sortData:[]
     },
     mutations:{
         SEARCH_SUMMONER(state, id){
@@ -25,7 +27,23 @@ export default new Vuex.Store({
         },
         SET_MATCH(state, matches){
             state.matchID = matches.data
-            console.log(state.matchID)
+            // console.log(state.matchID)
+        },
+        SET_DATA(state, datas){
+            // if(datas.data.info.participants.summonerName == state.searchName){
+            //     state.matchData.push(datas.data.info.participants)
+            // }
+            state.matchData.push(datas)
+            
+        },
+        SORT_MATCH(state, matchdata){
+            // for(let i=0; i<matchdata.length; i++){
+            //     console.log(matchdata[i])
+            // }
+            console.log(matchdata, 1)
+        },
+        RESET_DATA(state, reset){
+            state.matchData = reset
         }
     },
     getters:{
@@ -33,7 +51,8 @@ export default new Vuex.Store({
         searchName: state => state.searchName,
         summoner: state => state.summoner,
         rank: state => state.rank,
-        matchID: state => state.matchID
+        matchID: state => state.matchID,
+        matchData: state => state.matchData
     },
     actions:{
         searchUser:({commit}, payload) => {
@@ -42,7 +61,7 @@ export default new Vuex.Store({
                 axios.get('https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/'+res.data.id+'?api_key='+payload.apiKey)
                 .then((result)=>{
                     commit('SET_RANK', result)
-                })
+                }) 
             }).catch(error => {
                 console.log(error)
                 router.go('-1')
@@ -50,9 +69,17 @@ export default new Vuex.Store({
                 
             })
         },
+        matchReset:({commit}) => {
+            commit('RESET_DATA', [])
+        },
         findMatch:({commit}, payload) => {
             axios.get('https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/'+payload.puuid+'/ids?type=ranked&start=0&count=10&api_key='+payload.apiKey).then((res)=>{
                 commit('SET_MATCH', res)
+                for(let i = 0; i < res.data.length; i++){
+                    axios.get('https://asia.api.riotgames.com/lol/match/v5/matches/'+res.data[i]+'?api_key='+payload.apiKey).then((result)=>{
+                        commit('SET_DATA', result.data.info.participants)
+                    })
+                }
             })
         }
     }

@@ -9,7 +9,7 @@ export default new Vuex.Store({
     state: {
         searchName: '',
         summoner: [],
-        apiKey: 'RGAPI-ea01688b-06ec-4405-a0c5-8d09a70b21e5',
+        apiKey: '',
         rank: [],
         matchID: [],
         matchData: []
@@ -26,11 +26,9 @@ export default new Vuex.Store({
         },
         SET_MATCH(state, matches) {
             state.matchID = matches.data
-            console.log(matches.data)
         },
         SET_DATA(state, datas) {
             state.matchData.push(datas.filter(item => item['summonerName'].toUpperCase() == state.searchName.toUpperCase()))
-            console.log(state.matchData)
         },
         RESET_DATA(state, reset) {
             state.matchData = reset

@@ -12,7 +12,7 @@ export default new Router({
             component:()=>import('../components/main_page.vue')
         },
         {
-            path:'/stats/:s_ID',
+            path:'/stats/',
             name:'stats_page',
             component:()=>import('../components/stats_page.vue')
         },

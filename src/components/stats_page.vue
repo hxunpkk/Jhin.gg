@@ -16,7 +16,15 @@
                 {{ item.losses }}
             </v-col>
         </v-row>
-        <v-btn @click="[matchReset(), matchFinder()]">전적 갱신하기</v-btn>
+        <v-btn @click="matchFinder()">전적 갱신하기</v-btn>
+        <v-row v-for="item in matchData" :key="item.summonerId">
+            <v-col style="color: white">
+                {{ item[0].kills }} /
+                {{ item[0].deaths }} /
+                {{ item[0].assists }}
+                {{ item[0].win? '승':'패' }}
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
@@ -37,15 +45,16 @@
             },
             rank(){
                 return this.$store.getters.rank
+            },
+            matchData(){
+                return this.$store.getters.matchData
             } 
         },
         methods:{
             matchFinder(){
-                this.$store.dispatch('findMatch', {puuid:this.$store.getters.summoner.data.puuid, apiKey:this.$store.getters.apiKey, sid:this.$store.getters.searchName})
-                this.$store.commit('SORT_MATCH', this.$store.getters.matchData)
-            },
-            matchReset(){
-                this.$store.dispatch('matchReset')
+                if(this.$store.getters.matchData.length == 0){
+                    this.$store.dispatch('findMatch', {puuid:this.$store.getters.summoner.data.puuid, apiKey:this.$store.getters.apiKey, sid:this.$store.getters.searchName})
+                }
             }
         }
         

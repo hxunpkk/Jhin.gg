@@ -9,7 +9,7 @@ export default new Vuex.Store({
     state: {
         searchName: '',
         summoner: [],
-        apiKey: 'RGAPI-773f0b9b-e900-400a-a6ed-f8fa83b72f76',
+        apiKey: '',
         rank: [],
         matchID: [],
         matchData: []

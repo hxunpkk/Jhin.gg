@@ -9,7 +9,7 @@ export default new Vuex.Store({
     state: {
         searchName: '',
         summoner: [],
-        apiKey: '',
+        apiKey: 'RGAPI-773f0b9b-e900-400a-a6ed-f8fa83b72f76',
         rank: [],
         matchID: [],
         matchData: []
@@ -19,7 +19,9 @@ export default new Vuex.Store({
             state.searchName = id
         },
         SET_SUMMONER(state, stats) {
-            state.summoner = stats
+            state.summoner = { id:stats.data.id, level:stats.data.summonerLevel, puuid:stats.data.puuid, profileIconId:stats.data.profileIconId, name: stats.data.name }
+            // state.summoner = stats.data
+            console.log(state.summoner)
         },
         SET_RANK(state, stats) {
             state.rank = stats.data.filter(item => item['queueType'] == "RANKED_SOLO_5x5")

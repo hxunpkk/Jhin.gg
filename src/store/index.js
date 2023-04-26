@@ -2,10 +2,17 @@ import router from '@/router'
 import axios from 'axios'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import modLogin from '@/store/login'
+import modCommon from '@/store/common'
+import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+    modules:{
+        login : modLogin,
+        common : modCommon
+    },
     state: {
         searchName: '',
         summoner: [],
@@ -20,8 +27,6 @@ export default new Vuex.Store({
         },
         SET_SUMMONER(state, stats) {
             state.summoner = { id:stats.data.id, level:stats.data.summonerLevel, puuid:stats.data.puuid, profileIconId:stats.data.profileIconId, name: stats.data.name }
-            // state.summoner = stats.data
-            console.log(state.summoner)
         },
         SET_RANK(state, stats) {
             state.rank = stats.data.filter(item => item['queueType'] == "RANKED_SOLO_5x5")
@@ -72,5 +77,8 @@ export default new Vuex.Store({
                 }
             })
         }
-    }
+    },
+    plugins:[
+        (new VuexPersistence({ storage:window.localStorage })).plugin
+    ]
 })

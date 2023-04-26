@@ -5,7 +5,7 @@
                 <v-img src="@/assets/logo.png"></v-img>
             </v-col>
         </v-row>
-        <v-row class="mt-12" justify="center">
+        <v-row class="mt-0" justify="center">
             <v-form class="rounded-lg d-flex flex-row align-center" @submit.prevent="fnSearchSummoner(searchName)" style="width:60%">
                 <v-text-field label="소환사 검색" name="name" v-model="searchName" append-icon="mdi-magnify" @click:append="fnSearchSummoner(searchName)" outlined dark></v-text-field>
             </v-form>

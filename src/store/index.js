@@ -4,7 +4,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import modLogin from '@/store/login'
 import modCommon from '@/store/common'
-import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
 
@@ -78,7 +77,4 @@ export default new Vuex.Store({
             })
         }
     },
-    plugins:[
-        (new VuexPersistence({ storage:window.localStorage })).plugin
-    ]
 })

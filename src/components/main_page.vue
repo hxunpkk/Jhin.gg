@@ -10,6 +10,9 @@
                 <v-text-field label="소환사 검색" name="name" v-model="searchName" append-icon="mdi-magnify" @click:append="fnSearchSummoner(searchName)" outlined dark></v-text-field>
             </v-form>
         </v-row>
+        <v-row class="mt-12" justify="center">
+            <video src="@/assets/awaken.mp4" autoplay muted loop width="1300px" height="300px" style="object-fit: cover"></video>
+        </v-row>
     </v-container>
 </template>
 

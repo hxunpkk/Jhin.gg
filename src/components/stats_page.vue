@@ -5,23 +5,25 @@
                 <v-sheet class="rounded-lg" dark>
                     <v-list rounded="lg" style="background:#31313C">
                         <v-row>
-                            <v-col cols="4">
-                                <v-avatar class="mt-2" size="x-large">
+                            <v-col cols="3">
+                                <v-avatar size="x-large">
                                     <v-img :src="summonerIcon" style="width:80px; height:80px"></v-img>
                                 </v-avatar>
                             </v-col>
                             <v-col v-bind="summoner" class="mx-0 px-0">
-                                <v-list-item>
-                                    <v-list-item-title >
-                                    {{ summoner.name }}
-                                    {{ summoner.level }}
+                                <v-list-item class="d-block">
+                                    <v-list-item-title>
+                                        <v-chip class="mx-2 my-2 pa-2" label :color="levelColor(summoner.level)" text-color="white">
+                                            Lv {{ summoner.level }} 
+                                        </v-chip>
+                                        <span style="font-size:13px">{{ summoner.name }}</span>
                                     </v-list-item-title>
+                                    <v-list-item-subtitle>
+                                        <v-btn @click="matchFinder()" class="green ml-2" style="color:white; font-size:13px">
+                                            <v-icon>mdi mdi-refresh</v-icon> 전적 갱신하기
+                                        </v-btn>
+                                    </v-list-item-subtitle>
                                 </v-list-item>
-                                <v-list-item-subtitle>
-                                    <v-btn @click="matchFinder()" class="green ml-2" style="color:white">
-                                        <v-icon>mdi mdi-refresh</v-icon> 전적 갱신하기
-                                    </v-btn>
-                                </v-list-item-subtitle>
                             </v-col>
                         </v-row>
                         
@@ -34,7 +36,7 @@
                                 </v-avatar>
                             </v-col>
                             <v-col>
-                                <v-list-item class="d-block" style="font-size:14px">
+                                <v-list-item class="d-block mt-6" style="font-size:14px">
                                     <v-list-item-title>
                                         {{ item.tier }}
                                         {{ item.rank }}
@@ -43,7 +45,7 @@
                                         {{ item.leaguePoints }} LP
                                     </v-list-item-subtitle>
                                     <v-list-item-subtitle class="mt-2">
-                                        {{ item.wins }}승 {{ item.losses }}패({{ ((item.wins/(item.wins+item.losses))*100).toFixed(0) }}%)
+                                        {{ item.wins }}승 {{ item.losses }}패 ({{ ((item.wins/(item.wins+item.losses))*100).toFixed(0) }}%)
                                     </v-list-item-subtitle>
                                 </v-list-item>
                             </v-col>
@@ -73,7 +75,7 @@
                                         {{ item[0].assists }}
                                     </div>
                                 </div>
-                                <div class="mr-6 text-center font-weight-medium">
+                                <div class="mr-12 text-center font-weight-medium">
                                     <div>
                                         {{ (item[0].totalMinionsKilled / Number((item[0].timePlayed/60).toFixed(2))).toFixed(1) }} CS/분
                                     </div>
@@ -89,6 +91,7 @@
                                         와드 제거/설치 {{ item[0].wardsKilled }} / {{ item[0].wardsPlaced }}
                                     </div>
                                 </div>
+                                <v-spacer></v-spacer>
                                 <div class="mr-6">
                                     <div class="d-flex flex-row">
                                         <div class="rounded grey darken-4">
@@ -121,6 +124,7 @@
                                         아군 피해량의 {{ (item[0].challenges.teamDamagePercentage * 100).toFixed(0) }}% 
                                     </div>
                                 </div>
+                            
                                 <div class="text-center font-weight-medium">
                                     <div>
                                         {{ ((item[0].timePlayed/60).toString()).split('.')[0] }}분 {{ (Number((item[0].timePlayed/60).toFixed(2).split('.')[1]) *  0.6).toFixed(0)}}초
@@ -190,10 +194,40 @@ export default {
             else {
                 return '#505050'
             }
+        },
+        levelColor(level){
+            if (level < 50) {
+                return '#424242'
+            } else if (level < 100) {
+                return '#7CB342'
+            } else if (level < 150) {
+                return '#00897B'
+            } else if (level < 200) {
+                return '#F9A825'
+            } else if (level < 250) {
+                return '#FF8F00'
+            } else if (level < 300) {
+                return '#F4511E'
+            } else if (level < 350) {
+                return '#303F9F'
+            } else if (level < 400) {
+                return '#512DA8'
+            } else if (level < 450) {
+                return '#0D47A1'
+            } else if (level < 500) {
+                return '#D81B60'
+            } else {
+                return '#D32F2F'
+            }
         }
     }
 
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-chip{
+    font-size:12px;
+    height: 25px;
+}
+</style>

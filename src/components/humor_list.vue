@@ -94,9 +94,9 @@
 </template>
 
 <script>
-    import { oBoardDB } from '@/assets/firebase'
+    import { oHumorDB } from '@/assets/firebase'
     export default {
-        firebase : { contentlist : oBoardDB },
+        firebase : { contentlist : oHumorDB },
         data(){
             return {
                 contentlist : [],

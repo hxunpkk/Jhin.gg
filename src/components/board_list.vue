@@ -2,7 +2,7 @@
     <v-container style="max-width:1300px">
         <v-row>
             <v-col cols="3">
-                <v-sheet class="rounded-lg" dark>
+                <v-sheet class="rounded-lg " dark>
                     <v-list rounded="lg" style="background:#FFFFFF">
                         <v-row>
                             <v-col class="mx-0 px-0">
@@ -116,10 +116,7 @@
         },
         methods:{
             clickRow(item){
-                this.$router.push({name:'board_content', params:{ item:item, title:item.title, page:this.page, type:'notice' }})
-            },
-            moveToWrite(){
-                this.$router.push({name:'board_write', params:{ type:'notice' }})
+                this.$router.push({name:'board_content', params:{ item:item, title:item.title, page:this.page, type:'board' }})
             }
         },
         created(){

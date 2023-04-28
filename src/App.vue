@@ -12,10 +12,14 @@
       <v-btn text v-if="!fnGetAuthStatus" @click="$router.push('/login')" class="blue accent-2 mr-2" style="color:white; font-size: 14px;">
         로그인
       </v-btn>
-      <v-btn text v-if="fnGetAuthStatus" @click="fnDoLogout" style="color:white;">
-        {{ fnGetUser }}님
-        <v-icon left class="ml-3">mdi-arrow-right-bold-box-outline</v-icon>로그아웃
-      </v-btn>
+      <v-tooltip bottom v-if="fnGetAuthStatus">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn text @click="fnDoLogout" style="color:white;" v-bind="attrs" v-on="on">
+            {{ fnGetUser }}님 환영합니다.
+          </v-btn>
+        </template>
+        <span>클릭시 로그아웃 됩니다.</span>
+      </v-tooltip>
     </v-app-bar>
 
     <v-main class="grey darken-4">
@@ -109,7 +113,7 @@ export default {
       },
       fnGetUser(){
          let oUserInfo = this.$store.getters.fnGetUser
-         let name = oUserInfo.name ? oUserInfo.name : '고객'
+         let name = oUserInfo.name ? oUserInfo.name : 'User'
          return name
       }
     },

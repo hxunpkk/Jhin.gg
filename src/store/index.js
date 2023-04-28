@@ -4,13 +4,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import modLogin from '@/store/login'
 import modCommon from '@/store/common'
+import modRotation from '@/store/rotation'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules:{
         login : modLogin,
-        common : modCommon
+        common : modCommon,
+        rotation : modRotation
     },
     state: {
         searchName: '',

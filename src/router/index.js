@@ -20,6 +20,8 @@ export default new Router({
         { path:'/tips_list', name:'tips_list', component:()=>import('../components/tips_list.vue')},
         { path:'/usernews_list', name:'usernews_list', component:()=>import('../components/usernews_list.vue')},
         { path:'/video_list', name:'video_list', component:()=>import('../components/video_list.vue')},
+        { path:'/board_write', name:'board_write', component:()=>import('../components/board_write.vue')},
+        { path:'/board_content/:title', name:'board_content', component:()=>import('../components/board_content.vue')},
         { path:'*', redirect:'/'}
     ]
 })

@@ -3,67 +3,7 @@
         <v-row>
             <v-col cols="3">
                 <v-sheet class="rounded-lg" dark>
-                    <v-list rounded="lg" style="background:#FFFFFF">
-                        <v-row>
-                            <v-col class="mx-0 px-0">
-                                <v-list-item class="d-block">
-                                    <v-list-item-title class="mt-2 board_title">
-                                        홈
-                                    </v-list-item-title>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('board_list')">
-                                        전체
-                                    </v-list-item-subtitle>
-                                </v-list-item>
-                            </v-col>
-                        </v-row>
-                        <v-divider class="mb-2 mt-4" color="#ebeef1"></v-divider>
-                        <v-row>
-                            <v-col class="mx-0 px-0">
-                                <v-list-item class="d-block">
-                                    <v-list-item-title class="mt-2 board_title">
-                                        정보
-                                    </v-list-item-title>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('notice_list')">
-                                        JHIN.GG 기획
-                                    </v-list-item-subtitle>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('usernews_list')">
-                                        유저 뉴스
-                                    </v-list-item-subtitle>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('tips_list')">
-                                        팁과 노하우
-                                    </v-list-item-subtitle>
-                                </v-list-item>
-                            </v-col>
-                        </v-row>
-                        <v-divider class="mb-2 mt-4" color="#ebeef1"></v-divider>
-                        <v-row>
-                            <v-col class="mx-0 px-0">
-                                <v-list-item class="d-block">
-                                    <v-list-item-title class="mt-2 board_title">
-                                        커뮤니티
-                                    </v-list-item-title>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('freeboard_list')">
-                                        자유
-                                    </v-list-item-subtitle>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('humor_list')">
-                                        유머
-                                    </v-list-item-subtitle>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('video_list')">
-                                        영상
-                                    </v-list-item-subtitle>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('finduser_list')">
-                                        유저 찾기
-                                    </v-list-item-subtitle>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('report_list')">
-                                        사건 사고
-                                    </v-list-item-subtitle>
-                                    <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('picture_list')">
-                                        팬 아트
-                                    </v-list-item-subtitle>
-                                </v-list-item>
-                            </v-col>
-                        </v-row>
-                    </v-list>
+                    <list-bar></list-bar>
                 </v-sheet>
             </v-col>
             
@@ -94,6 +34,7 @@
 </template>
 
 <script>
+    import listBar from '@/components/list_bar.vue'
     import { oPictureDB } from '@/assets/firebase'
     export default {
         firebase : { contentlist : oPictureDB },
@@ -102,7 +43,7 @@
                 contentlist : [],
                 headers:[
                     { text:'번호', width:'10%', value:'index', sortable:false, align:'center' },
-                    { text:'게시판', width:'10%', value:'type', sortable:false, align:'center' },
+                    { text:'게시판', width:'20%', value:'type', sortable:false, align:'center' },
                     { text:'제목', width:'auto', value:'title', sortable:false, align:'center' },
                     { text:'작성자', width:'15%', value:'writer', sortable:false, align:'center' },
                     { text:'작성일', width:'15%', value:'date', sortable:false, align:'center' }
@@ -117,12 +58,15 @@
                 showWriteBtn:false
             }
         },
+        components:{
+            'list-bar' : listBar
+        },
         methods:{
             clickRow(item){
-                this.$router.push({name:'board_content', params:{ item:item, title:item.title, page:this.page, type:'notice' }})
+                this.$router.push({name:'board_content', params:{ item:item, title:item.title, page:this.page, type:'picture' }})
             },
             moveToWrite(){
-                this.$router.push({name:'board_write', params:{ type:'notice' }})
+                this.$router.push({name:'board_write', params:{ type:'picture' }})
             }
         },
         created(){

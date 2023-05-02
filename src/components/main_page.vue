@@ -20,10 +20,11 @@
         </v-row>
         <v-row class="my-12" justify="center">
             <video src="@/assets/awaken.mp4" autoplay muted loop width="1300px" height="300px"
-                style="object-fit: cover"></video>
+                style="object-fit: cover" v-if="$mq==='pc'? true:false"></video>
+            <v-img :src='"@/assets/img/banner.png"' width="1300px" height="300px" style="object-fit: cover" v-if="$mq==='pc'? false:true"></v-img>
         </v-row>
         <v-row justify="center">
-            <v-col cols="4" class="mr-0">
+            <v-col :cols="$mq==='pc'? 4:12" class="mr-0">
                 <v-sheet class="mx-auto text-center rounded-lg py-12 elevation-1" style="background:#31313C" dark >
                     <h3>금주의 무료 로테이션 챔피언</h3>
                     <v-slide-group v-model="model" class="pa-4" active-class="success" show-arrows>
@@ -34,7 +35,7 @@
                     </v-slide-group>
                 </v-sheet>
             </v-col>
-            <v-col cols="4">
+            <v-col :cols="$mq==='pc'? 4:12">
                 <v-sheet class="mx-auto text-center rounded-lg py-12 elevation-1 px-4" style="background:#31313C" justify="center">
                     <patch-note></patch-note>
                     <patch-table></patch-table>

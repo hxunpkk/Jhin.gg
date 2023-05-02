@@ -1,61 +1,12 @@
 <template>
     <v-container style="max-width:1300px">
         <v-row>
-            <v-col cols="3">
-                <v-sheet class="rounded-lg" dark>
-                    <v-list rounded="lg" style="background:#31313C">
-                        <v-row>
-                            <v-col cols="3">
-                                <v-avatar size="x-large">
-                                    <v-img :src="summonerIcon" style="width:80px; height:80px"></v-img>
-                                </v-avatar>
-                            </v-col>
-                            <v-col v-bind="summoner" class="mx-0 px-0">
-                                <v-list-item class="d-block">
-                                    <v-list-item-title>
-                                        <v-chip class="mx-2 my-2 pa-2" label :color="levelColor(summoner.level)" text-color="white">
-                                            Lv {{ summoner.level }} 
-                                        </v-chip>
-                                        <span style="font-size:13px">{{ summoner.name }}</span>
-                                    </v-list-item-title>
-                                    <v-list-item-subtitle>
-                                        <v-btn @click="matchFinder()" class="green ml-2" style="color:white; font-size:13px">
-                                            <v-icon>mdi mdi-refresh</v-icon> 전적 갱신하기
-                                        </v-btn>
-                                    </v-list-item-subtitle>
-                                </v-list-item>
-                            </v-col>
-                        </v-row>
-                        
-                        <v-divider class="my-2"></v-divider>
-
-                        <v-row v-for="item in rank" :key="item.id">
-                            <v-col cols="5">
-                                <v-avatar size="x-large">
-                                        <v-img :src='"@/assets/img/ranked-emblem/"+item.tier+".png"' style="width:120px; height:120px"></v-img>
-                                </v-avatar>
-                            </v-col>
-                            <v-col>
-                                <v-list-item class="d-block mt-6" style="font-size:14px">
-                                    <v-list-item-title>
-                                        {{ item.tier }}
-                                        {{ item.rank }}
-                                    </v-list-item-title>
-                                    <v-list-item-subtitle class="mt-2">
-                                        {{ item.leaguePoints }} LP
-                                    </v-list-item-subtitle>
-                                    <v-list-item-subtitle class="mt-2">
-                                        {{ item.wins }}승 {{ item.losses }}패 ({{ ((item.wins/(item.wins+item.losses))*100).toFixed(0) }}%)
-                                    </v-list-item-subtitle>
-                                </v-list-item>
-                            </v-col>
-                        </v-row>
-                    </v-list>
-                </v-sheet>
+            <v-col :cols="$mq==='pc'? 3:12">
+                <summoner-data></summoner-data>
             </v-col>
             
-            <v-col>
-                <v-sheet min-height="70vh" rounded="lg" style="background:#31313C" class="mt-3">
+            <v-col :cols="$mq==='pc'? 9:12">
+                <v-sheet rounded="lg" style="background:#31313C" class="mt-3">
                     <v-row v-for="item in matchData" :key="item.summonerId" class="mx-1 py-1">
                         <v-col :class=" item[0].win ? 'light-blue lighten-4':'red lighten-4'" cols="12" class="rounded">
                             <div class="d-flex flex-row align-center bg-surface-variant">
@@ -150,6 +101,7 @@
 </template>
 
 <script>
+import summonerData from '@/components/summoner_data.vue'
 export default {
     name: 'statsPage',
     data() {
@@ -157,30 +109,18 @@ export default {
             sID: this.$route.params.s_ID,
         }
     },
+    components:{
+        'summoner-data' : summonerData
+    },
     computed: {
-        summoner() {
-            return this.$store.getters.summoner
-        },
-        summonerIcon() {
-            return "http://ddragon.leagueoflegends.com/cdn/13.7.1/img/profileicon/" + this.$store.getters.summoner.profileIconId + ".png"
-        },
-        rank() {
-            return this.$store.getters.rank
-        },
         matchData() {
             return this.$store.getters.matchData
         },
         showData(){
             return this.$store.getters.matchData.length > 0 ? false : true
         },
-        
     },
     methods: {
-        matchFinder() {
-            if (this.$store.getters.matchData.length == 0) {
-                this.$store.dispatch('findMatch', { puuid: this.$store.getters.summoner.puuid, apiKey: this.$store.getters.apiKey, sid: this.$store.getters.searchName })
-            }
-        },
         KDAColor(kda){
             if (kda > 15) {
                 return '#FF0000'
@@ -188,38 +128,14 @@ export default {
                 return '#FF8200'
             } else if (kda > 8) {
                 return '#FFA500'
-            }else if (kda > 4) {
+            } else if (kda > 4) {
                 return '#957745'
             }
             else {
                 return '#505050'
             }
         },
-        levelColor(level){
-            if (level < 50) {
-                return '#424242'
-            } else if (level < 100) {
-                return '#7CB342'
-            } else if (level < 150) {
-                return '#00897B'
-            } else if (level < 200) {
-                return '#F9A825'
-            } else if (level < 250) {
-                return '#FF8F00'
-            } else if (level < 300) {
-                return '#F4511E'
-            } else if (level < 350) {
-                return '#303F9F'
-            } else if (level < 400) {
-                return '#512DA8'
-            } else if (level < 450) {
-                return '#0D47A1'
-            } else if (level < 500) {
-                return '#D81B60'
-            } else {
-                return '#D32F2F'
-            }
-        }
+        
     }
 
 }

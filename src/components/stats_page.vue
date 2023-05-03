@@ -10,13 +10,13 @@
                     <v-row v-for="item in matchData" :key="item.summonerId" class="mx-1 py-1">
                         <v-col :class=" item[0].win ? 'light-blue lighten-4':'red lighten-4'" cols="12" class="rounded">
                             <div class="d-flex flex-row align-center bg-surface-variant">
-                                <div class="mr-8">
-                                    <v-img :src="'https://ddragon.leagueoflegends.com/cdn/13.8.1/img/champion/'+item[0].championName+'.png'" style="width:80px; height:80px"></v-img>
+                                <div :class="$mq==='pc'? 'mr-8':'mr-3'">
+                                    <v-img :src="'https://ddragon.leagueoflegends.com/cdn/13.8.1/img/champion/'+item[0].championName+'.png'" :style="$mq==='pc'? 'width:80px; height:80px' : 'width:60px; height:60px'"></v-img>
                                 </div>
-                                <div class="mr-8 text-h6 font-weight-black" :style="{color: item[0].win ? '#2979FF' : '#FF5252'}">
+                                <div :class="$mq==='pc'? 'mr-8 text-h6 font-weight-black' : 'mr-2 text-h8 font-weight-black'" :style="{color: item[0].win ? '#2979FF' : '#FF5252'}">
                                     {{ item[0].win ? '승' : '패' }}
                                 </div>
-                                <div class="mr-6 text-center font-weight-medium">
+                                <div :class="$mq==='pc'? 'mr-6 text-center font-weight-medium' : 'mr-2 text-center font-weight-medium'">
                                     <div class="font-weight-bold" :style="{color: KDAColor(Number(item[0].challenges.kda.toFixed(2)))}">
                                         {{ item[0].challenges.kda.toFixed(2)}} KDA
                                     </div>
@@ -26,7 +26,7 @@
                                         {{ item[0].assists }}
                                     </div>
                                 </div>
-                                <div class="mr-12 text-center font-weight-medium">
+                                <div :class="$mq==='pc'? 'mr-12 text-center font-weight-medium' : 'mr-4 text-center font-weight-medium'">
                                     <div>
                                         {{ (item[0].totalMinionsKilled / Number((item[0].timePlayed/60).toFixed(2))).toFixed(1) }} CS/분
                                     </div>
@@ -34,7 +34,7 @@
                                         {{ item[0].totalMinionsKilled }} CS
                                     </div>
                                 </div>
-                                <div class="mr-6 text-center font-weight-medium">
+                                <div class="mr-6 text-center font-weight-medium" :style="$mq === 'pc' || $mq === 'tablet' ? '':'display:none'">
                                     <div>
                                         제어 와드 {{item[0].visionWardsBoughtInGame}}
                                     </div>
@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                                 <v-spacer></v-spacer>
-                                <div class="mr-6">
+                                <div :class="$mq === 'pc' || $mq === 'tablet'? 'mr-6' : 'mr-2'">
                                     <div class="d-flex flex-row">
                                         <div class="rounded grey darken-4">
                                             <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.8.1/img/item/'+item[0].item0+'.png'" style="width:30px; height:30px" class="rounded"></v-img>
@@ -67,7 +67,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mr-6 text-center font-weight-medium">
+                                <div class="mr-6 text-center font-weight-medium" :style="$mq==='pc' || $mq === 'tablet' ? '':'display:none'">
                                     <div>
                                         분당 피해량 {{item[0].challenges.damagePerMinute.toFixed(0)}}
                                     </div>
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                             
-                                <div class="text-center font-weight-medium">
+                                <div class="text-center font-weight-medium" :style="$mq === 'pc' || $mq === 'tablet' ? '':'display:none'">
                                     <div>
                                         {{ ((item[0].timePlayed/60).toString()).split('.')[0] }}분 {{ (Number((item[0].timePlayed/60).toFixed(2).split('.')[1]) *  0.6).toFixed(0)}}초
                                     </div>

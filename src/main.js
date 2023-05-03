@@ -14,7 +14,7 @@ import '@/assets/firebase'
 import VueMq from 'vue-mq'
 Vue.use(VueMq, {
   breakpoints: {
-    mobile: 400,
+    mobile: 450,
     tablet: 1024,
     pc: Infinity,
   }

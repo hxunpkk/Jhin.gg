@@ -10,7 +10,6 @@ export default new Router({
         { path:'/stats', name:'stats_page', component:()=>import('../components/stats_page.vue')},
         { path:'/login', name:'login_page', component:()=>import('../components/login_page.vue')},
         { path:'/join', name:'join_page', component:()=>import('../components/join_page.vue')},
-        { path:'/board_list', name:'board_list', component:()=>import('../components/board_list.vue')},
         { path:'/finduser_list', name:'finduser_list', component:()=>import('../components/finduser_list.vue')},
         { path:'/freeboard_list', name:'freeboard_list', component:()=>import('../components/freeboard_list.vue')},
         { path:'/humor_list', name:'humor_list', component:()=>import('../components/humor_list.vue')},
@@ -22,6 +21,7 @@ export default new Router({
         { path:'/video_list', name:'video_list', component:()=>import('../components/video_list.vue')},
         { path:'/board_write', name:'board_write', component:()=>import('../components/board_write.vue')},
         { path:'/board_content/:title', name:'board_content', component:()=>import('../components/board_content.vue')},
+        { path:'/board_modify/:title', name:'board_modify', component:()=>import('../components/board_modify.vue')},
         { path:'*', redirect:'/'}
     ]
 })

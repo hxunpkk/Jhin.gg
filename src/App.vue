@@ -5,7 +5,7 @@
         <h2>JHIN.GG</h2>
       </v-toolbar-title>
       <v-toolbar-title @click="$router.push('/')" class="pointer mr-4" style="font-size: 14px;">홈</v-toolbar-title>
-      <v-toolbar-title @click="$router.push('/board_list')" class="pointer" style="font-size: 14px;">커뮤니티</v-toolbar-title>
+      <v-toolbar-title @click="$router.push('/freeboard_list')" class="pointer" style="font-size: 14px;">커뮤니티</v-toolbar-title>
       
       <v-spacer></v-spacer>
 
@@ -82,7 +82,7 @@
           <v-col cols="10" style="color:white; font-size:12px">
             © 2023 - JHIN.GG. JHIN.GG isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
           </v-col>
-          <v-col cols="2">
+          <v-col cols="2" :style="$mq==='pc' || $mq==='tablet' ? '':'display:none'">
             <div class="ml-4 d-flex">
               <div class="mr-4">
                 <a href="https://twitter.com/" target="_blank"><v-img src="https://s-lol-web.op.gg/images/icon/icon-logo-twitter.svg?v=1682536851774" width="24" height="24"></v-img></a>

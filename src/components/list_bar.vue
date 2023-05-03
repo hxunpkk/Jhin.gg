@@ -6,8 +6,8 @@
                 <v-list-item-title class="mt-2 board_title">
                     홈
                 </v-list-item-title>
-                <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('/board_list')">
-                    전체
+                <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('/freeboard_list')">
+                    자유
                 </v-list-item-subtitle>
             </v-list-item>
         </v-col>
@@ -38,9 +38,6 @@
                 <v-list-item-title class="mt-2 board_title">
                     커뮤니티
                 </v-list-item-title>
-                <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('/freeboard_list')">
-                    자유
-                </v-list-item-subtitle>
                 <v-list-item-subtitle class="py-2 board_subtitle" @click="$router.push('/humor_list')">
                     유머
                 </v-list-item-subtitle>

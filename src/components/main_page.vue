@@ -21,7 +21,7 @@
         <v-row class="my-12" justify="center">
             <video src="@/assets/awaken.mp4" autoplay muted loop width="1300px" height="300px"
                 style="object-fit: cover" v-if="$mq==='pc'? true:false"></video>
-            <v-img :src='"@/assets/img/banner.png"' width="1300px" height="300px" style="object-fit: cover" v-if="$mq==='pc'? false:true"></v-img>
+            <v-img :src='"@/assets/img/banner.png"' width="1300px" height="200px" style="object-fit: cover" v-if="$mq==='pc'? false:true"></v-img>
         </v-row>
         <v-row justify="center">
             <v-col :cols="$mq==='pc'? 4:12" class="mr-0">

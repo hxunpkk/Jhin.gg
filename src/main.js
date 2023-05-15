@@ -11,6 +11,11 @@ Vue.use(rtdbPlugin)
 import  firebase from 'firebase/compat/app'
 import '@/assets/firebase'
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+Vue.use(AOS);
+
 import VueMq from 'vue-mq'
 Vue.use(VueMq, {
   breakpoints: {
@@ -34,6 +39,10 @@ new Vue({
       }
     })
   }, 
+
+  mounted () {
+		AOS.init();
+	},
 
   render: h => h(App)
 }).$mount('#app')

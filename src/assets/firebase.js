@@ -10,7 +10,7 @@ const oFirebase = firebase.initializeApp({
   apiKey: "",
   authDomain: "",
   databaseURL: "",
-  storageBucket: "",
+  storageBucket: ""
 });
 
 const oDB = oFirebase.database();

@@ -14,7 +14,6 @@ export default {
                     }
                   }
             }
-            console.log(state.champId)
         }
     },
     getters:{

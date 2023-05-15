@@ -30,7 +30,7 @@
                     <v-slide-group v-model="model" class="pa-4" active-class="success" show-arrows>
                         <v-slide-item v-for="(item, index) in champ" :key="index">
                             <v-img
-                            :src="'https://ddragon.leagueoflegends.com/cdn/13.8.1/img/champion/' + item + '.png'" class="text-left align-end"><span class="champName font-weight-bold px-1" >{{ item }}</span></v-img>
+                            :src="'https://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/' + item + '.png'" class="text-left align-end"><span class="champName font-weight-bold px-1" >{{ item }}</span></v-img>
                         </v-slide-item>
                     </v-slide-group>
                 </v-sheet>

@@ -2,16 +2,16 @@
     <v-container style="max-width:1300px">
         <v-row>
             <v-col cols="3">
-                <v-sheet class="rounded-lg" dark>
+                <v-sheet class="rounded-lg" dark :style="$mq==='pc'? '':'display:none;'">
                     <list-bar></list-bar>
                 </v-sheet>
             </v-col>
             
-            <v-col>
+            <v-col :cols="$mq==='pc'? '' : 12">
                 <v-sheet min-height="70vh" rounded="lg" style="background:#FFFFFF" class="mt-3">
                     <v-row>
                         <v-col cols="4" class="ml-8">
-                            <h2 class="mt-1">JHIN.GG 기획</h2>
+                            <h2 class="mt-1" :class="$mq==='pc'? '' : 'text-h6 font-weight-bold'">JHIN.GG</h2>
                         </v-col>
                         <v-spacer></v-spacer>
                         <v-col cols="3" class="mr-8"> 

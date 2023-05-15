@@ -2,7 +2,7 @@
     <v-sheet class="rounded-lg" dark>
         <v-list rounded="lg" style="background:#31313C" :class="$mq==='pc'? none:'text-center'">
             <v-row>
-                <v-col :cols="$mq==='pc'? 3:6">
+                <v-col :cols="$mq==='pc'? 3:5">
                     <v-avatar size="x-large">
                         <v-img :src="summonerIcon" style="width:80px; height:80px"></v-img>
                     </v-avatar>
@@ -64,7 +64,7 @@ export default {
             return this.$store.getters.summoner
         },
         summonerIcon() {
-            return "http://ddragon.leagueoflegends.com/cdn/13.7.1/img/profileicon/" + this.$store.getters.summoner.profileIconId + ".png"
+            return "http://ddragon.leagueoflegends.com/cdn/13.9.1/img/profileicon/" + this.$store.getters.summoner.profileIconId + ".png"
         },
         rank() {
             return this.$store.getters.rank

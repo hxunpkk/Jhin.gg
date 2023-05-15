@@ -27,6 +27,11 @@
       return {
         patches: [
           {
+            name: '13.9 패치노트',
+            date: '2023-05-03',
+            src:'https://www.leagueoflegends.com/ko-kr/news/game-updates/patch-13-9-notes/'
+          },
+          {
             name: '13.8 패치노트',
             date: '2023-04-19',
             src:'https://www.leagueoflegends.com/ko-kr/news/game-updates/patch-13-8-notes/'
@@ -51,11 +56,6 @@
             date: '2023-02-24',
             src:'https://www.leagueoflegends.com/ko-kr/news/game-updates/patch-13-4-notes/'
           },
-          {
-            name: '13.3 패치노트',
-            date: '2023-02-15',
-            src:'https://www.leagueoflegends.com/ko-kr/news/game-updates/patch-13-3-notes/'
-          }
         ],
       }
     },

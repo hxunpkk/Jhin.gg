@@ -22,6 +22,9 @@ export default new Router({
         { path:'/board_write', name:'board_write', component:()=>import('../components/board_write.vue')},
         { path:'/board_content/:title', name:'board_content', component:()=>import('../components/board_content.vue')},
         { path:'/board_modify/:title', name:'board_modify', component:()=>import('../components/board_modify.vue')},
+        { path:'/about', name:'about_page', component:()=>import('../components/about_page.vue')},
+        { path:'/company', name:'company_page', component:()=>import('../components/company_page.vue')},
+        { path:'/blog', name:'blog_page', component:()=>import('../components/blog_page.vue')},
         { path:'*', redirect:'/'}
     ]
 })

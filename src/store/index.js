@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import modLogin from '@/store/login'
 import modCommon from '@/store/common'
 import modRotation from '@/store/rotation'
+import modRanking from '@/store/rank'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ export default new Vuex.Store({
     modules:{
         login : modLogin,
         common : modCommon,
-        rotation : modRotation
+        rotation : modRotation,
+        ranking : modRanking
     },
     state: {
         searchName: '',

@@ -19,7 +19,8 @@
                         </v-col>
                     </v-row>
                     <v-row class="mb-10" justify="center">
-                        <v-data-table class="elevation-1 mx-4 mb-10" :sort-by="['index']" :sort-desc="[true]" :headers="headers" :items="itemsWithIndex" :search="search" :loading="loading" loading-text="text" :page.sync="page" :items-per-page="itemsPerPage" hide-default-footer @page-count="pageCount = $event" @click:row="clickRow"></v-data-table>
+                        <v-data-table class="elevation-1 mx-4 mb-10" :sort-by="['index']" :sort-desc="[true]" :headers="headers" :items="itemsWithIndex" :search="search" :loading="loading" loading-text="text" :page.sync="page" :items-per-page="itemsPerPage" hide-default-footer @page-count="pageCount = $event" @click:row="clickRow" mobile-breakpoint="0"
+></v-data-table>
                         <v-col cols="12">
                             <v-pagination v-model="page" :length="pageCount" :total-visible="totalVisible" next-icon="mdi-menu-right" prev-icon="mdi-menu-left"></v-pagination>
                         </v-col>
@@ -42,10 +43,9 @@
             return {
                 contentlist : [],
                 headers:[
-                    { text:'번호', width:'10%', value:'index', sortable:false, align:'center' },
-                    { text:'게시판', width:'20%', value:'type', sortable:false, align:'center' },
+                    { text:'번호', width:'20%', value:'index', sortable:false, align:'center' },
                     { text:'제목', width:'auto', value:'title', sortable:false, align:'center' },
-                    { text:'작성자', width:'15%', value:'writer', sortable:false, align:'center' },
+                    { text:'작성자', width:'20%', value:'writer', sortable:false, align:'center' },
                     { text:'작성일', width:'15%', value:'date', sortable:false, align:'center' }
                 ],
                 text:'Welcome!!',

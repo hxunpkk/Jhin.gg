@@ -25,6 +25,7 @@
         <v-tabs align-with-title dark>
           <v-tab @click="$router.push('/')">홈</v-tab>
           <v-tab @click="$router.push('/freeboard_list')">커뮤니티</v-tab>
+          <v-tab @click="$router.push('/rank')">랭킹</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -80,6 +81,10 @@
               </v-list-item>
             </v-list-group>
           </v-list-group>
+
+          <v-list-item @click="$router.push('/rank')">
+            <v-list-item-title>랭킹</v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -100,7 +105,7 @@
             <ul class="px-0 pt-4">
               <li class="pb-1 pointer" @click="$router.push('/about')">About JHIN.GG</li>
               <li class="pb-1 pointer" @click="$router.push('/company')">Company</li>
-              <li class="pb-1 pointer" @click="$router.push('/blog')">Blog</li>
+              <li class="pb-1 pointer" @click="$router.push('/')">Blog</li>
             </ul>
           </v-col>
           <v-col class="mt-2" cols="12" sm="2">

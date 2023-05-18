@@ -11,7 +11,7 @@
                         <v-col :class=" item[0].win ? 'light-blue lighten-4':'red lighten-4'" cols="12" class="rounded">
                             <div class="d-flex flex-row align-center bg-surface-variant">
                                 <div :class="$mq==='pc'? 'mr-8':'mr-3'">
-                                    <v-img :src="'https://ddragon.leagueoflegends.com/cdn/13.9.1/img/champion/'+item[0].championName+'.png'" :style="$mq==='pc'? 'width:80px; height:80px' : 'width:60px; height:60px'"></v-img>
+                                    <v-img :src="'https://ddragon.leagueoflegends.com/cdn/13.10.1/img/champion/'+item[0].championName+'.png'" :style="$mq==='pc'? 'width:80px; height:80px' : 'width:60px; height:60px'"></v-img>
                                 </div>
                                 <div :class="$mq==='pc'? 'mr-8 text-h6 font-weight-black' : 'mr-2 text-h8 font-weight-black'" :style="{color: item[0].win ? '#2979FF' : '#FF5252'}">
                                     {{ item[0].win ? '승' : '패' }}
@@ -46,24 +46,24 @@
                                 <div :class="$mq === 'pc' || $mq === 'tablet'? 'mr-6' : 'mr-0'">
                                     <div class="d-flex flex-row">
                                         <div class="rounded grey darken-4">
-                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/'+item[0].item0+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
+                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.10.1/img/item/'+item[0].item0+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
                                         </div>
                                         <div class="rounded grey darken-4">
-                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/'+item[0].item1+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
+                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.10.1/img/item/'+item[0].item1+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
                                         </div>
                                         <div class="rounded grey darken-4">
-                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/'+item[0].item2+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
+                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.10.1/img/item/'+item[0].item2+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-row">
                                         <div class="rounded grey darken-4">
-                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/'+item[0].item3+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
+                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.10.1/img/item/'+item[0].item3+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
                                         </div>
                                         <div class="rounded grey darken-4">
-                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/'+item[0].item4+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
+                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.10.1/img/item/'+item[0].item4+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
                                         </div>
                                         <div class="rounded grey darken-4">
-                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.9.1/img/item/'+item[0].item5+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
+                                            <v-img :src="'http://ddragon.leagueoflegends.com/cdn/13.10.1/img/item/'+item[0].item5+'.png'" :style="$mq === 'pc' || $mq === 'tablet' ? 'width:30px; height:30px':'width:20px; height:20px'" class="rounded"></v-img>
                                         </div>
                                     </div>
                                 </div>

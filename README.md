@@ -17,5 +17,6 @@ https://jhingg-711a3.web.app/
 - 게시판 기능
 - 태블릿, 모바일 반응형 사이트
 
-
+## 발표 자료
+https://github.com/hxunpkk/Jhin.gg/blob/main/박현우_vue프로젝트.pptx
 

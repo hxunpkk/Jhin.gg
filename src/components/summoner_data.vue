@@ -64,7 +64,7 @@ export default {
             return this.$store.getters.summoner
         },
         summonerIcon() {
-            return "http://ddragon.leagueoflegends.com/cdn/13.10.1/img/profileicon/" + this.$store.getters.summoner.profileIconId + ".png"
+            return "http://ddragon.leagueoflegends.com/cdn/13.12.1/img/profileicon/" + this.$store.getters.summoner.profileIconId + ".png"
         },
         rank() {
             return this.$store.getters.rank
